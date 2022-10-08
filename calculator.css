@@ -6,7 +6,7 @@ body {
   background: #00B4DB;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #025570, #03677e) fixed;  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #005bb0, #00B4DB) fixed; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+font-family: 'Poppins', sans-serif;
   
 }
 *,
@@ -107,4 +107,12 @@ button:hover {
   grid-gap: 20px;
   padding: 20px;
   margin-top: 130px;
+}
+
+.swal-text{
+   font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  color: #202020;
 }

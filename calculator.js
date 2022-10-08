@@ -1,3 +1,9 @@
+let showNotification = Math.floor(Math.random() * 4) + 1
+if(showNotification === 2){
+  swal("Heeey! You can try using calculator with your keyboard.Try it!");
+}
+console.log(showNotification)
+
 const btns = document.querySelector(".calculator-keys");
 btns.addEventListener("click", handleBtnClick);
 
