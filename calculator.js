@@ -2,7 +2,7 @@ const btns = document.querySelector(".calculator-keys");
 btns.addEventListener("click", handleBtnClick);
 
 const inputEl = document.querySelector(".calculator-screen");
-inputEl.addEventListener("keypress", handleKeyboard);
+document.addEventListener("keypress", handleKeyboard);
 let firstOperand = "";
 let secondOperand = "";
 let sign = null;
@@ -35,33 +35,33 @@ function handleDeviceInput(value, device) {
     case "0":
       if (firstOperand === "") {
         firstOperand = value;
-        if (device === "mouse") {
+
           updateInput(firstOperand);
-        }
+
 
       } else {
         if (firstOperand !== "0" && sign === null) {
           firstOperand = operandAndValue(firstOperand, value);
-          if (device === "mouse") {
+         
             updateInput(firstOperand);
-          }
+   
         } else if (sign) {
           if (secondOperand === "") {
             secondOperand = value;
-            if (device === "mouse") {
+       
               updateInput(secondOperand);
-            }
+            
           } else {
             if (secondOperand !== "0") {
               secondOperand = operandAndValue(secondOperand, value);
-              if (device === "mouse") {
+              
                 updateInput(secondOperand);
-              }
+              
             }
           }
-          if (device === "mouse") {
+       
             updateInput(firstOperand + sign + secondOperand);
-          }
+          
         }
       }
       break;
@@ -73,59 +73,59 @@ function handleDeviceInput(value, device) {
 
         if (firstOperand !== "" && secondOperand === "") {
           sign = value;
-          if (device === "mouse") {
+          
             updateInput(firstOperand + sign);
-          }
+          
         }
         if (firstOperand.lastIndexOf(".") === firstOperand.length - 1) {
           firstOperand = firstOperand.replace(".", "");
-          if (device === "mouse") {
+          
             updateInput(firstOperand + sign);
-          }
+          
         }
       
-      if (device === "mouse") {
+ 
         if (firstOperand === "") {
           firstOperand += value
           updateInput(firstOperand)
-        }
+        
       }
       
       if(value === "-" && secondOperand !== ""){
         secondOperand+="-";
-        if (device === "mouse") {
+        
         updateInput(firstOperand+ sign + secondOperand)
-        }
+        
       }
       break;
     case "(":
       
       if(firstOperand === ""){
         firstOperand += "("
-        if (device === "mouse") {
+        
         updateInput(firstOperand)
-        }
+        
       }
       if(sign !== null && secondOperand === ""){
         secondOperand += "("
-        if (device === "mouse") {
+       
         updateInput(firstOperand + sign + secondOperand)
-        }
+        
       }
       break
     case ")":
       
       if(firstOperand.indexOf("(") !== -1 && sign === null){
         firstOperand += ")"
-        if (device === "mouse") {
+       
         updateInput(firstOperand)
-        }
+        
       }
       else{
           secondOperand += ")"
-          if (device === "mouse") {
+          
           updateInput(firstOperand + sign + secondOperand)
-          }
+          
       }
 
       break
@@ -143,9 +143,9 @@ function handleDeviceInput(value, device) {
       if (firstOperand !== "" && sign === null) {
         if (firstOperand.indexOf(".") === -1) {
           firstOperand += value;
-          if (device === "mouse") {
+        
             updateInput(firstOperand);
-          }
+          
         }
       }
 
@@ -153,9 +153,9 @@ function handleDeviceInput(value, device) {
       if (firstOperand !== "" && secondOperand !== "" && sign !== null) {
         if (secondOperand.indexOf(".") === -1) {
           secondOperand += value;
-          if (device === "mouse") {
+         
             updateInput(firstOperand + sign + secondOperand);
-          }
+          
         }
       }
       break;
@@ -204,13 +204,14 @@ function handleKeyboard(event) {
       } else {
         firstOperand = operandAndValue(firstOperand, value);
       }
-
+      updateInput(firstOperand);
     } else {
       if (secondOperand === "0") {
         secondOperand = value;
       } else {
         secondOperand = operandAndValue(secondOperand, value);
       }
+      updateInput(firstOperand + sign + secondOperand);
     }
 
   } else {
